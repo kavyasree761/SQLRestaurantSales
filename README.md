@@ -274,6 +274,7 @@ FROM MonthlyOrders;
 ```
 
 ## Query 14: Customer Segmentation
+
 Segment customers into 'Gold' and 'Silver' based on their total spending compared to the average order value.
 ```
 WITH CustomerSpending AS (
@@ -292,6 +293,7 @@ GROUP BY Segment;
 ```
 
  ## Query 15: Rider's Monthly Earnings
+ 
 Calculate rider's total monthly earnings, assuming they earn 8% of the total order value.
 ```
 SELECT d.rider_id, FORMAT(o.Order_Date, 'yyyy-MM') AS Month,
@@ -303,6 +305,7 @@ ORDER BY d.Rider_ID, Month;
 ```
 
 ## Query 16: Rider Rating Analysis
+
 Analyze rider ratings based on delivery time: <15 mins (5 stars), 15-20 mins (4 stars), >20 mins (3 stars).
 ```
 WITH DeliveryTimes AS (
@@ -324,9 +327,11 @@ SELECT Rider_ID,
        END) AS Avg_Rider_Rating
 FROM DeliveryTimes
 GROUP BY Rider_ID;
+```
 
--- Query 17: Order Frequency by Day
--- Identify the busiest day of the week for each restaurant based on order count.
+## Query 17: Order Frequency by Day
+
+Identify the busiest day of the week for each restaurant based on order count.
 WITH DailyOrders AS (
     SELECT r.Restaurant_Name,
            DATENAME(WEEKDAY, o.Order_Date) AS Order_Day,
