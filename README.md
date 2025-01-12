@@ -5,9 +5,13 @@
 This project involves a comprehensive analysis of restaurant sales data using SQL queries. The analysis covers various aspects of a food delivery service, including customer behavior, restaurant performance, order patterns, and delivery metrics.
 
 ## Project Structure
+
 Database Setup: Creation of Database and the required tables.
+
 Data Import: Importing data into tables.
+
 Data Cleaning: Handling null values to ensure data integrity.
+
 Business Problems: Solved 18 specific business problems using SQL Queries.
 
 ## Database Structure
