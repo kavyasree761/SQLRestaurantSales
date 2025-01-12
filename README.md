@@ -18,12 +18,13 @@ The database consists of five main tables:
 ## Database Schema
 
 
-```-- Customers table
+```
+-- Customers table
 CREATE TABLE Customers (
     Customer_ID INT PRIMARY KEY,
     Customer_Name VARCHAR(100) NOT NULL,
     Reg_Date DATE NOT NULL
-);```
+);
 
 -- Restaurants table
 CREATE TABLE Restaurants (
