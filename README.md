@@ -332,6 +332,7 @@ GROUP BY Rider_ID;
 ## Query 17: Order Frequency by Day
 
 Identify the busiest day of the week for each restaurant based on order count.
+```
 WITH DailyOrders AS (
     SELECT r.Restaurant_Name,
            DATENAME(WEEKDAY, o.Order_Date) AS Order_Day,
