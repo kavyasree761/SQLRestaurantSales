@@ -1,13 +1,13 @@
 # SQLRestaurantSales
 **Project Overview:**
-This project involves a comprehensive analysis of restaurant sales data using SQL queries. The analysis covers various aspects of a food delivery service, including customer behavior, restaurant performance, order patterns, and delivery metrics.  
-**Database Structure**
-The database consists of five main tables:
-**Customers:** Contains customer information
-**Restaurants:** Stores details about restaurants
-**Orders:** Records all order information
-**Riders:** Contains data about delivery riders
-**Deliveries:** Tracks delivery information for each order
+This project involves a comprehensive analysis of restaurant sales data using SQL queries. The analysis covers various aspects of a food delivery service, including customer behavior, restaurant performance, order patterns, and delivery metrics.$$
+**Database Structure**$$
+The database consists of five main tables:$$
+**Customers:** Contains customer information$$
+**Restaurants:** Stores details about restaurants$$
+**Orders:** Records all order information$$
+**Riders:** Contains data about delivery riders$$
+**Deliveries:** Tracks delivery information for each order$$
 **Database Schema**
 -- Customers table
 CREATE TABLE Customers (
