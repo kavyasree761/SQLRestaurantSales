@@ -63,7 +63,6 @@ CREATE TABLE Deliveries (
 );
 ```
 
-text
 # Restaurant Sales Data Analysis Project
 
 ## SQL Queries
@@ -72,12 +71,15 @@ text
 
 Fetch the top 3 customers based on their total spending across all orders.
 
+```
 SELECT TOP 3
 Customer_ID,
 SUM(Total_Amount) AS Total_Spent
 FROM Orders
 GROUP BY Customer_ID
 ORDER BY Total_Spent DESC;
+```
+
 text
 
 ### Query 2: Most popular item across all restaurants
