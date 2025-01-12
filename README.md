@@ -80,36 +80,34 @@ GROUP BY Customer_ID
 ORDER BY Total_Spent DESC;
 ```
 
-text
-
 ### Query 2: Most popular item across all restaurants
 
 Identify the most frequently ordered item.
-
+```
 SELECT TOP 1
 Order_Item,
 COUNT(Order_Item) AS Order_Count
 FROM Orders
 GROUP BY Order_Item
 ORDER BY Order_Count DESC;
-text
+```
 
 ### Query 3: Restaurant with the highest number of orders
 
 Find the restaurant that received the maximum number of orders.
-
+```
 SELECT
 Restaurant_ID,
 COUNT(Restaurant_ID) AS Order_Count
 FROM Orders
 GROUP BY Restaurant_ID
 ORDER BY Order_Count DESC;
-text
+```
 
 ### Query 4: Top 5 most frequently ordered dishes by a specific customer
 
 Fetch the top 5 dishes ordered by a customer named "Nathan Scott."
-
+```
 SELECT TOP 5
 C.Customer_ID,
 C.Customer_Name,
@@ -120,12 +118,12 @@ JOIN Orders O ON C.Customer_ID = O.Customer_ID
 WHERE C.Customer_Name LIKE 'Nathan Scott'
 GROUP BY C.Customer_ID, C.Customer_Name, O.Order_Item
 ORDER BY Order_Count DESC;
-text
+```
 
 ### Query 5: Time slot with the most orders placed
 
 Analyze which time slot has the highest number of orders.
-
+```
 WITH TimeSlots AS (
 SELECT
 Order_ID,
@@ -151,12 +149,12 @@ COUNT(*) AS Order_Count
 FROM TimeSlots
 GROUP BY Order_Time_Slot
 ORDER BY Order_Count DESC;
-text
+```
 
 ### Query 6: Average order value per customer with more than 5 orders
 
 Calculate the average spending per order for customers who have placed more than 5 orders.
-
+```
 SELECT
 C.Customer_Name,
 AVG(O.Total_Amount) AS Average_Order_Value
@@ -165,12 +163,12 @@ JOIN Orders O ON C.Customer_ID = O.Customer_ID
 GROUP BY C.Customer_Name
 HAVING COUNT(O.Order_ID) > 5
 ORDER BY Average_Order_Value DESC;
-text
+```
 
 ### Query 7: High-value customers
 
 Identify customers who have spent more than $130 in total on orders.
-
+```
 SELECT
 C.Customer_ID,
 C.Customer_Name,
@@ -179,24 +177,24 @@ FROM Customers C
 JOIN Orders O ON C.Customer_ID = O.Customer_ID
 GROUP BY C.Customer_ID, C.Customer_Name
 HAVING SUM(O.Total_Amount) > 130;
-text
+```
 
 ### Query 8: Orders without delivery
 
 Identify restaurants with undelivered orders, showing restaurant name, city, and count of undelivered orders.
-
+```
 SELECT R.Restaurant_Name, R.City,
 COUNT(CASE WHEN O.Order_Status != 'Delivered' THEN 1 END) AS undelivered_orders
 FROM Restaurants R
 JOIN Orders O ON R.Restaurant_ID = O.Restaurant_ID
 GROUP BY R.Restaurant_Name, R.City
 ORDER BY undelivered_orders DESC;
-text
+```
 
 ### Query 9: Restaurant Revenue Ranking
 
 Rank restaurants by their revenue, showing the top restaurant by revenue in each city.
-
+```
 WITH RankedRestaurants AS (
 SELECT R.City, R.Restaurant_Name,
 SUM(O.Total_Amount) AS Total_Revenue,
@@ -206,12 +204,12 @@ JOIN Orders O ON R.Restaurant_ID = O.Restaurant_ID
 GROUP BY R.City, R.Restaurant_Name
 )
 SELECT * FROM RankedRestaurants WHERE rev_rank = 1;
-text
+```
 
 ### Query 10: Most Popular Dish in each City
 
 Identify the most ordered dish in each city based on the number of orders.
-
+```
 WITH DishRanking AS (
 SELECT R.City, O.Order_Item,
 RANK() OVER (PARTITION BY R.City ORDER BY COUNT(Order_Item) DESC) AS dish_rank
@@ -220,12 +218,12 @@ JOIN Restaurants R ON O.Restaurant_ID = R.Restaurant_ID
 GROUP BY R.City, O.Order_Item
 )
 SELECT * FROM DishRanking WHERE dish_rank = 1;
-text
+```
 
 ### Query 11: Customer Churn
 
 Identify customers who placed orders in 2024 but not in 2025.
-
+```
 SELECT DISTINCT Customer_ID
 FROM Orders
 WHERE YEAR(Order_Date) = 2024
@@ -234,12 +232,12 @@ SELECT DISTINCT Customer_ID
 FROM Orders
 WHERE YEAR(Order_Date) = 2025
 );
-text
+```
 
 ### Query 12: Rider's Average Delivery Time
 
 Calculate the average delivery time for each rider in minutes.
-
+```
 SELECT Rider_ID,
 AVG(CASE
 WHEN d.Delivery_Time >= o.Order_Time THEN
@@ -251,12 +249,12 @@ FROM Orders o
 JOIN Deliveries d ON o.Order_ID = d.Order_ID
 WHERE Delivery_Status = 'delivered'
 GROUP BY Rider_ID;
-text
+```
 
 ### Query 13: Monthly Restaurant Growth Ratio
 
 Calculate the month-over-month growth ratio for each restaurant based on delivered orders.
-
+```
 WITH MonthlyOrders AS (
 SELECT r.Restaurant_Name,
 FORMAT(Order_Date, 'yyyy-MM') AS Order_Month,
@@ -273,3 +271,4 @@ WHEN PrevMonthOrders > 0 THEN (DeliveredOrders - PrevMonthOrders) / CAST(PrevMon
 ELSE NULL
 END AS monthly_growth_ratio
 FROM MonthlyOrders;
+```
