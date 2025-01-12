@@ -61,6 +61,7 @@ CREATE TABLE Deliveries (
     Delivery_Time TIME,
     Rider_ID INT FOREIGN KEY REFERENCES Riders(Rider_ID)
 );```
+
 text
 # Restaurant Sales Data Analysis Project
 
