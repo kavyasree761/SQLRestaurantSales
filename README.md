@@ -72,7 +72,6 @@ CREATE TABLE Deliveries (
 );
 ```
 
-# Restaurant Sales Data Analysis Project
 
 ## SQL Queries
 
