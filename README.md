@@ -60,7 +60,7 @@ CREATE TABLE Deliveries (
     Delivery_Status VARCHAR(50) NOT NULL,
     Delivery_Time TIME,
     Rider_ID INT FOREIGN KEY REFERENCES Riders(Rider_ID)
-);
+);```
 text
 # Restaurant Sales Data Analysis Project
 
